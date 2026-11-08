@@ -1,0 +1,1178 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<title>YASSER UNBAN TOOL</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --red:#ff2525;
+  --red2:#b80000;
+  --bg:#070707;
+  --panel:#101010;
+  --border:#292020;
+  --text:#f5f5f5;
+  --muted:#999;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html { scroll-behavior:smooth; }
+
+body {
+  background:var(--bg);
+  color:var(--text);
+  font-family:Inter,sans-serif;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+body::before {
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:-1;
+  background:
+    radial-gradient(ellipse at 10% 10%,#45000040,transparent 40%),
+    radial-gradient(ellipse at 90% 70%,#30000030,transparent 40%),
+    linear-gradient(#ffffff05 1px,transparent 1px),
+    linear-gradient(90deg,#ffffff05 1px,transparent 1px);
+  background-size:auto,auto,40px 40px,40px 40px;
+}
+
+#particles {
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+}
+
+.particle {
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:var(--red);
+  border-radius:50%;
+  box-shadow:0 0 12px var(--red);
+  animation:float 8s infinite linear;
+}
+
+@keyframes float {
+  0% { transform:translateY(100vh);opacity:0; }
+  15% {opacity:1;}
+  85% {opacity:1;}
+  100% {transform:translateY(-20px);opacity:0;}
+}
+
+header {
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#080808ed;
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid #ff252530;
+}
+
+.nav {
+  max-width:1200px;
+  margin:auto;
+  padding:15px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.logo {
+  width:43px;
+  height:43px;
+  display:grid;
+  place-items:center;
+  border:2px solid var(--red);
+  color:var(--red);
+  font-family:Orbitron;
+  font-weight:900;
+  font-size:19px;
+  clip-path:polygon(50% 0,95% 20%,90% 75%,50% 100%,10% 75%,5% 20%);
+  filter:drop-shadow(0 0 8px var(--red));
+}
+
+.brand-name {
+  font-family:Orbitron;
+  font-size:13px;
+  font-weight:800;
+  letter-spacing:1px;
+}
+
+.brand-name span { color:var(--red); }
+
+.brand small {
+  display:block;
+  color:#888;
+  font-size:9px;
+  letter-spacing:2px;
+  margin-top:4px;
+}
+
+.nav-right {
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.lang-btn,.menu-btn {
+  background:#151515;
+  border:1px solid var(--border);
+  color:white;
+  padding:10px 13px;
+  border-radius:9px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.menu-btn { display:none; }
+
+.container {
+  max-width:1100px;
+  padding:25px 18px 60px;
+  margin:auto;
+}
+
+.hero {
+  text-align:center;
+  padding:65px 15px 45px;
+}
+
+.system-status {
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:#ff7777;
+  background:#ff252510;
+  border:1px solid #ff252550;
+  padding:9px 15px;
+  border-radius:50px;
+  font-size:10px;
+  letter-spacing:2px;
+  font-family:Orbitron;
+}
+
+.dot {
+  width:7px;
+  height:7px;
+  background:#ff3333;
+  border-radius:50%;
+  box-shadow:0 0 10px red;
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  50% {opacity:.3;transform:scale(.7);}
+}
+
+.hero h1 {
+  font-family:Orbitron;
+  font-size:clamp(30px,7vw,64px);
+  font-weight:900;
+  margin:25px 0 15px;
+  line-height:1.2;
+  text-shadow:0 0 30px #ff252550;
+}
+
+.hero h1 span { color:var(--red); }
+
+.hero p {
+  max-width:600px;
+  margin:auto;
+  color:var(--muted);
+  font-size:14px;
+  line-height:1.8;
+}
+
+.hero-actions {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:27px;
+}
+
+.btn {
+  padding:13px 19px;
+  border:1px solid var(--red);
+  background:var(--red);
+  color:white;
+  border-radius:9px;
+  cursor:pointer;
+  font-weight:800;
+  font-size:12px;
+  transition:.25s;
+  text-decoration:none;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+}
+
+.btn:hover {
+  transform:translateY(-3px);
+  box-shadow:0 0 25px #ff252550;
+}
+
+.btn-outline {
+  background:transparent;
+  color:var(--red);
+}
+
+.btn-dark {
+  background:#191919;
+  border-color:#333;
+  color:white;
+}
+
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:13px;
+  margin:15px 0 35px;
+}
+
+.stat {
+  background:linear-gradient(145deg,#171111,#0c0c0c);
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:19px 10px;
+  text-align:center;
+}
+
+.stat strong {
+  display:block;
+  font-family:Orbitron;
+  color:var(--red);
+  font-size:19px;
+}
+
+.stat span {
+  display:block;
+  color:#888;
+  font-size:10px;
+  margin-top:7px;
+}
+
+.section-title {
+  font-family:Orbitron;
+  font-size:19px;
+  margin:38px 0 17px;
+}
+
+.section-title span { color:var(--red); }
+
+.panel {
+  background:linear-gradient(145deg,#151010,#0c0c0c);
+  border:1px solid var(--border);
+  border-radius:15px;
+  padding:22px;
+  margin-bottom:17px;
+  position:relative;
+  overflow:hidden;
+}
+
+.panel::before {
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  width:65px;
+  height:2px;
+  background:var(--red);
+  box-shadow:0 0 12px red;
+}
+
+.panel h3 {
+  font-family:Orbitron;
+  font-size:14px;
+  margin-bottom:17px;
+}
+
+.panel h3 span { color:var(--red); }
+
+label {
+  display:block;
+  color:#ccc;
+  font-size:12px;
+  margin:15px 0 8px;
+}
+
+input,select,textarea {
+  width:100%;
+  padding:14px;
+  border:1px solid #332626;
+  background:#080808;
+  color:white;
+  border-radius:9px;
+  outline:none;
+  font-family:Inter,sans-serif;
+  font-size:13px;
+}
+
+input:focus,select:focus,textarea:focus {
+  border-color:var(--red);
+  box-shadow:0 0 12px #ff252520;
+}
+
+select option { background:#111; }
+
+.phone-row {
+  display:grid;
+  grid-template-columns:145px 1fr;
+  gap:10px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+}
+
+.result {
+  display:none;
+  padding:15px;
+  margin-top:15px;
+  border:1px solid #ff252555;
+  border-radius:10px;
+  background:#ff25250c;
+  line-height:1.8;
+  font-size:13px;
+}
+
+.result.show { display:block; }
+
+.result strong { color:#ff6262; }
+
+.appeal-output {
+  min-height:170px;
+  resize:vertical;
+  line-height:1.8;
+  color:#ddd;
+}
+
+.small-note {
+  color:#888;
+  font-size:11px;
+  line-height:1.7;
+  margin-top:12px;
+}
+
+.guide-item {
+  border:1px solid var(--border);
+  background:#111;
+  border-radius:10px;
+  padding:16px;
+  margin-bottom:10px;
+}
+
+.guide-item strong {
+  font-size:13px;
+  color:#ff6666;
+}
+
+.guide-item p {
+  color:#aaa;
+  font-size:12px;
+  line-height:1.8;
+  margin-top:7px;
+}
+
+.faq {
+  border-bottom:1px solid #292020;
+  padding:15px 0;
+}
+
+.faq button {
+  width:100%;
+  background:none;
+  border:0;
+  color:white;
+  text-align:left;
+  cursor:pointer;
+  font-size:13px;
+  font-weight:700;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.faq p {
+  display:none;
+  color:#999;
+  font-size:12px;
+  line-height:1.8;
+  padding-top:12px;
+}
+
+.faq.open p { display:block; }
+
+footer {
+  text-align:center;
+  padding:30px 15px;
+  border-top:1px solid var(--border);
+  color:#888;
+  font-size:11px;
+  line-height:2;
+}
+
+footer strong { color:var(--red); }
+
+footer a {
+  color:#ff6666;
+  text-decoration:none;
+}
+
+.hidden { display:none!important; }
+
+.toast {
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,100px);
+  opacity:0;
+  background:#181818;
+  color:white;
+  border:1px solid var(--red);
+  padding:13px 20px;
+  border-radius:9px;
+  z-index:500;
+  font-size:12px;
+  transition:.3s;
+}
+
+.toast.show {
+  transform:translate(-50%,0);
+  opacity:1;
+}
+
+@media(max-width:700px) {
+  .container {padding:15px 13px 45px;}
+  .hero {padding:50px 8px 35px;}
+  .grid {grid-template-columns:1fr;}
+  .stats {gap:7px;}
+  .stat {padding:15px 5px;}
+  .stat strong {font-size:15px;}
+  .stat span {font-size:9px;}
+  .panel {padding:17px;}
+  .menu-btn {display:block;}
+  .nav-links {
+    display:none;
+    position:absolute;
+    top:72px;
+    left:10px;
+    right:10px;
+    padding:15px;
+    background:#101010;
+    border:1px solid var(--border);
+    border-radius:12px;
+    flex-direction:column;
+    gap:15px;
+  }
+  .nav-links.open {display:flex;}
+  .phone-row {grid-template-columns:115px 1fr;}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms!important;
+    transition-duration:.01ms!important;
+    scroll-behavior:auto!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="particles"></div>
+
+<header>
+  <nav class="nav">
+    <div class="brand">
+      <div class="logo">Y</div>
+      <div class="brand-name">
+        YASSER <span>UNBAN</span>
+        <small>OFFICIAL ASSISTANT</small>
+      </div>
+    </div>
+
+    <div class="nav-right">
+      <button class="lang-btn" id="langBtn">EN / SW</button>
+      <button class="menu-btn" id="menuBtn">☰</button>
+    </div>
+  </nav>
+</header>
+
+<main class="container">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="system-status">
+      <span class="dot"></span>
+      <span data-i18n="status">RECOVERY ASSISTANT ONLINE</span>
+    </div>
+
+    <h1>YASSER <span>UNBAN</span><br>TOOL</h1>
+
+    <p data-i18n="heroDesc">
+      Your trusted WhatsApp account recovery guidance
+      and official appeal assistant.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#diagnosis" class="btn" data-i18n="start">
+        START DIAGNOSIS →
+      </a>
+      <a href="#appeal" class="btn btn-outline" data-i18n="makeAppeal">
+        CREATE APPEAL
+      </a>
+    </div>
+  </section>
+
+  <!-- SYSTEM STATS -->
+  <div class="stats">
+    <div class="stat">
+      <strong>06</strong>
+      <span data-i18n="modules">SYSTEM MODULES</span>
+    </div>
+    <div class="stat">
+      <strong>02</strong>
+      <span data-i18n="languages">LANGUAGES</span>
+    </div>
+    <div class="stat">
+      <strong>100%</strong>
+      <span data-i18n="privacy">NO NUMBER STORAGE</span>
+    </div>
+  </div>
+
+  <!-- DIAGNOSIS -->
+  <h2 class="section-title" id="diagnosis">
+    <span>01 //</span> <span data-i18n="diagnosisTitle">SMART BAN DIAGNOSIS</span>
+  </h2>
+
+  <section class="panel">
+    <h3>YTS <span>DIAGNOSTIC ENGINE</span></h3>
+
+    <label data-i18n="country">Country</label>
+    <div class="phone-row">
+      <select id="country">
+        <option value="255">🇹🇿 +255</option>
+        <option value="254">🇰🇪 +254</option>
+        <option value="256">🇺🇬 +256</option>
+        <option value="250">🇷🇼 +250</option>
+        <option value="257">🇧🇮 +257</option>
+        <option value="1">🇺🇸 +1</option>
+        <option value="44">🇬🇧 +44</option>
+        <option value="91">🇮🇳 +91</option>
+        <option value="27">🇿🇦 +27</option>
+        <option value="234">🇳🇬 +234</option>
+        <option value="971">🇦🇪 +971</option>
+      </select>
+      <input id="phone" type="tel"
+        inputmode="numeric"
+        placeholder="Phone number"
+        autocomplete="off">
+    </div>
+
+    <label data-i18n="problem">What problem are you experiencing?</label>
+    <select id="problem">
+      <option value="banned" data-i18n="banned">This account is not allowed to use WhatsApp</option>
+      <option value="temporary" data-i18n="temporary">Temporarily restricted</option>
+      <option value="review" data-i18n="review">Review already requested</option>
+      <option value="unknown" data-i18n="unknown">I cannot access my account</option>
+    </select>
+
+    <button class="btn" id="diagnoseBtn" style="width:100%;margin-top:18px"
+      data-i18n="diagnose">
+      ANALYZE MY PROBLEM
+    </button>
+
+    <div class="result" id="diagnosisResult" aria-live="polite"></div>
+
+    <p class="small-note" data-i18n="diagnosisNote">
+      This is a guidance tool, not a connection to WhatsApp's
+      private account systems. It cannot verify an actual ban.
+    </p>
+  </section>
+
+  <!-- APPEAL GENERATOR -->
+  <h2 class="section-title" id="appeal">
+    <span>02 //</span> <span data-i18n="appealTitle">SMART APPEAL GENERATOR</span>
+  </h2>
+
+  <section class="panel">
+    <h3>YTS <span>APPEAL STUDIO</span></h3>
+
+    <label data-i18n="appealLanguage">Appeal language</label>
+    <select id="appealLanguage">
+      <option value="en">English</option>
+      <option value="sw">Kiswahili</option>
+    </select>
+
+    <label data-i18n="appealName">Your name (optional)</label>
+    <input id="userName" maxlength="60"
+      placeholder="Enter your name">
+
+    <label data-i18n="appealNumber">WhatsApp number</label>
+    <input id="appealNumber" readonly
+      placeholder="Number from diagnosis">
+
+    <label data-i18n="details">Explain your situation (optional)</label>
+    <textarea id="details" rows="3" maxlength="500"
+      placeholder="Describe what happened..."></textarea>
+
+    <button class="btn" id="generateBtn"
+      style="width:100%;margin-top:17px"
+      data-i18n="generate">
+      GENERATE APPEAL
+    </button>
+
+    <label data-i18n="preview">Appeal preview</label>
+    <textarea id="appealOutput" class="appeal-output"
+      placeholder="Your appeal will appear here..."
+      readonly></textarea>
+
+    <div class="grid" style="margin-top:12px">
+      <button class="btn btn-outline" id="copyBtn"
+        data-i18n="copy">COPY APPEAL</button>
+      <button class="btn btn-dark" id="clearBtn"
+        data-i18n="clear">CLEAR</button>
+    </div>
+
+    <p class="small-note" data-i18n="appealNote">
+      Always provide truthful information. This message is
+      a request for review, not a guarantee of account restoration.
+    </p>
+  </section>
+
+  <!-- OFFICIAL SUPPORT -->
+  <h2 class="section-title" id="support">
+    <span>03 //</span> <span data-i18n="supportTitle">OFFICIAL SUPPORT</span>
+  </h2>
+
+  <section class="panel">
+    <h3>WHATSAPP <span>OFFICIAL HELP</span></h3>
+    <p class="small-note" data-i18n="supportDesc">
+      Contact WhatsApp through its official support channel
+      to request assistance with your account.
+    </p>
+    <a class="btn" style="margin-top:18px;width:100%"
+      href="https://www.whatsapp.com/contact/"
+      target="_blank" rel="noopener noreferrer"
+      data-i18n="contact">
+      OPEN WHATSAPP SUPPORT ↗
+    </a>
+  </section>
+
+  <!-- RECOVERY GUIDE -->
+  <h2 class="section-title" id="guide">
+    <span>04 //</span> <span data-i18n="guideTitle">RECOVERY GUIDE</span>
+  </h2>
+
+  <section class="panel">
+    <div class="guide-item">
+      <strong data-i18n="step1">01. Check the message</strong>
+      <p data-i18n="step1Desc">
+        Read the message displayed by WhatsApp and identify
+        whether your account is temporarily restricted or banned.
+      </p>
+    </div>
+
+    <div class="guide-item">
+      <strong data-i18n="step2">02. Use the official app</strong>
+      <p data-i18n="step2Desc">
+        Install the official WhatsApp application from
+        the Apple App Store or Google Play Store.
+      </p>
+    </div>
+
+    <div class="guide-item">
+      <strong data-i18n="step3">03. Request a review</strong>
+      <p data-i18n="step3Desc">
+        If WhatsApp displays a Request a review option,
+        submit a truthful explanation.
+      </p>
+    </div>
+
+    <div class="guide-item">
+      <strong data-i18n="step4">04. Wait for a response</strong>
+      <p data-i18n="step4Desc">
+        Follow WhatsApp's instructions and wait for its decision.
+        Avoid repeatedly submitting identical requests.
+      </p>
+    </div>
+
+    <div class="guide-item">
+      <strong data-i18n="step5">05. Protect your account</strong>
+      <p data-i18n="step5Desc">
+        Never share verification codes or passwords.
+        Avoid unofficial modified WhatsApp applications.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <h2 class="section-title" id="faq">
+    <span>05 //</span> <span data-i18n="faqTitle">FAQ CENTER</span>
+  </h2>
+
+  <section class="panel">
+    <div class="faq">
+      <button data-i18n="q1">Can this tool unban my number automatically? <span>＋</span></button>
+      <p data-i18n="a1">
+        No. Only WhatsApp can review and decide whether to restore
+        an account. This tool only provides guidance.
+      </p>
+    </div>
+
+    <div class="faq">
+      <button data-i18n="q2">Does this tool store my number? <span>＋</span></button>
+      <p data-i18n="a2">
+        No. This single-file version does not send or save your
+        number to a database.
+      </p>
+    </div>
+
+    <div class="faq">
+      <button data-i18n="q3">Is the appeal guaranteed to work? <span>＋</span></button>
+      <p data-i18n="a3">
+        No. WhatsApp independently reviews every request.
+        Always give accurate information.
+      </p>
+    </div>
+
+    <div class="faq">
+      <button data-i18n="q4">Will WhatsApp ask for my OTP? <span>＋</span></button>
+      <p data-i18n="a4">
+        Never give your verification code to this tool or another person.
+        Enter codes only in the official WhatsApp application when needed.
+      </p>
+    </div>
+
+    <div class="faq">
+      <button data-i18n="q5">Can I use this on iPhone? <span>＋</span></button>
+      <p data-i18n="a5">
+        Yes. The website is responsive and supports modern mobile browsers.
+      </p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <h2 class="section-title" id="about">
+    <span>06 //</span> <span data-i18n="aboutTitle">ABOUT YASSER TECH</span>
+  </h2>
+
+  <section class="panel" style="text-align:center">
+    <div class="logo" style="margin:auto;width:65px;height:65px;font-size:25px">Y</div>
+    <h3 style="margin-top:18px">YASSER <span>TECH</span></h3>
+    <p class="small-note" data-i18n="aboutDesc">
+      YASSER UNBAN TOOL is an independent account recovery
+      guidance project powered by YASSER TECH.
+      It is not affiliated with or endorsed by WhatsApp or Meta.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <strong>YASSER TECH</strong><br>
+  YASSER UNBAN TOOL<br>
+  <span>© 2026 – All Rights Reserved</span><br><br>
+  <span data-i18n="footerNote">
+    Independent assistance platform. Not affiliated with WhatsApp.
+  </span>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+// =====================================
+// YASSER UNBAN TOOL
+// FRONTEND ENGINE
+// =====================================
+
+const $ = id => document.getElementById(id);
+
+let currentLanguage = "en";
+let lastNumber = "";
+
+// LANGUAGE SYSTEM
+const translations = {
+  en: {
+    status:"RECOVERY ASSISTANT ONLINE",
+    heroDesc:"Your trusted WhatsApp account recovery guidance and official appeal assistant.",
+    start:"START DIAGNOSIS →",
+    makeAppeal:"CREATE APPEAL",
+    modules:"SYSTEM MODULES",
+    languages:"LANGUAGES",
+    privacy:"NO NUMBER STORAGE",
+    diagnosisTitle:"SMART BAN DIAGNOSIS",
+    country:"Country",
+    problem:"What problem are you experiencing?",
+    banned:"This account is not allowed to use WhatsApp",
+    temporary:"Temporarily restricted",
+    review:"Review already requested",
+    unknown:"I cannot access my account",
+    diagnose:"ANALYZE MY PROBLEM",
+    diagnosisNote:"This is a guidance tool, not a connection to WhatsApp's private account systems. It cannot verify an actual ban.",
+    appealTitle:"SMART APPEAL GENERATOR",
+    appealLanguage:"Appeal language",
+    appealName:"Your name (optional)",
+    appealNumber:"WhatsApp number",
+    details:"Explain your situation (optional)",
+    generate:"GENERATE APPEAL",
+    preview:"Appeal preview",
+    copy:"COPY APPEAL",
+    clear:"CLEAR",
+    appealNote:"Always provide truthful information. This message is a request for review, not a guarantee of account restoration.",
+    supportTitle:"OFFICIAL SUPPORT",
+    supportDesc:"Contact WhatsApp through its official support channel to request assistance with your account.",
+    contact:"OPEN WHATSAPP SUPPORT ↗",
+    guideTitle:"RECOVERY GUIDE",
+    step1:"01. Check the message",
+    step1Desc:"Read the message displayed by WhatsApp and identify whether your account is temporarily restricted or banned.",
+    step2:"02. Use the official app",
+    step2Desc:"Install the official WhatsApp application from the Apple App Store or Google Play Store.",
+    step3:"03. Request a review",
+    step3Desc:"If WhatsApp displays a Request a review option, submit a truthful explanation.",
+    step4:"04. Wait for a response",
+    step4Desc:"Follow WhatsApp's instructions and wait for its decision. Avoid repeatedly submitting identical requests.",
+    step5:"05. Protect your account",
+    step5Desc:"Never share verification codes or passwords. Avoid unofficial modified WhatsApp applications.",
+    faqTitle:"FAQ CENTER",
+    q1:"Can this tool unban my number automatically? ＋",
+    a1:"No. Only WhatsApp can review and decide whether to restore an account. This tool only provides guidance.",
+    q2:"Does this tool store my number? ＋",
+    a2:"No. This single-file version does not send or save your number to a database.",
+    q3:"Is the appeal guaranteed to work? ＋",
+    a3:"No. WhatsApp independently reviews every request. Always give accurate information.",
+    q4:"Will WhatsApp ask for my OTP? ＋",
+    a4:"Never give your verification code to this tool or another person. Enter codes only in the official WhatsApp application when needed.",
+    q5:"Can I use this on iPhone? ＋",
+    a5:"Yes. The website is responsive and supports modern mobile browsers.",
+    aboutTitle:"ABOUT YASSER TECH",
+    aboutDesc:"YASSER UNBAN TOOL is an independent account recovery guidance project powered by YASSER TECH. It is not affiliated with or endorsed by WhatsApp or Meta.",
+    footerNote:"Independent assistance platform. Not affiliated with WhatsApp.",
+    invalid:"Please enter a valid phone number.",
+    resultTitle:"DIAGNOSIS GUIDANCE",
+    bannedResult:"Your selected issue indicates that WhatsApp may have restricted this account. Read the in-app notice and use Request a review if available.",
+    tempResult:"A temporary restriction may relate to activity WhatsApp considers unusual. Follow the displayed instructions and avoid unofficial apps or automation.",
+    reviewResult:"You have indicated that a review has already been requested. Wait for WhatsApp's response and follow any instructions provided.",
+    unknownResult:"Check your internet connection, use the official application and follow the recovery instructions shown in the app.",
+    numberAdded:"Number added to the local appeal form.",
+    generateFirst:"Generate an appeal first.",
+    copied:"Appeal copied successfully.",
+    copyFail:"Copy unavailable. Please select and copy the text manually.",
+    cleared:"Form cleared.",
+    name:"Hello WhatsApp Support Team,",
+    body:"I would like to respectfully request a review of my WhatsApp account.",
+    numberLabel:"My WhatsApp number is:",
+    situation:"My situation:",
+    request:"I believe there may have been a misunderstanding. Please review my account and let me know if any action is required from my side.",
+    thanks:"Thank you for your time and assistance.",
+    regards:"Kind regards,",
+    reasonRequired:"Please provide an honest explanation if you want to include details."
+  },
+  sw: {
+    status:"MFUMO WA MSAADA UKO TAYARI",
+    heroDesc:"Mwongozo wa kurejesha akaunti ya WhatsApp na msaidizi wa kuandaa ombi rasmi.",
+    start:"ANZA UCHUNGUZI →",
+    makeAppeal:"TENGENEZA OMBI",
+    modules:"VIPENGELE VYA MFUMO",
+    languages:"LUGHA",
+    privacy:"HAKUNA KUHIFADHI NAMBA",
+    diagnosisTitle:"UCHUNGUZI WA TATIZO",
+    country:"Nchi",
+    problem:"Unakabiliwa na tatizo gani?",
+    banned:"Akaunti hii hairuhusiwi kutumia WhatsApp",
+    temporary:"Akaunti imewekewa kizuizi cha muda",
+    review:"Tayari nimeomba ukaguzi",
+    unknown:"Siwezi kufungua akaunti yangu",
+    diagnose:"CHUNGUZA TATIZO LANGU",
+    diagnosisNote:"Huu ni mfumo wa kutoa mwongozo tu. Hauunganishwi na mifumo ya siri ya WhatsApp na hauwezi kuthibitisha ban halisi.",
+    appealTitle:"TENGENEZA OMBI LA UKAGUZI",
+    appealLanguage:"Lugha ya ombi",
+    appealName:"Jina lako (si lazima)",
+    appealNumber:"Namba ya WhatsApp",
+    details:"Eleza hali yako (si lazima)",
+    generate:"TENGENEZA OMBI",
+    preview:"Ujumbe wa ombi",
+    copy:"NAKILI UJUMBE",
+    clear:"FUTA",
+    appealNote:"Toa taarifa za kweli. Ujumbe huu ni ombi la ukaguzi, si uhakikisho wa kufunguliwa kwa akaunti.",
+    supportTitle:"MSAADA RASMI",
+    supportDesc:"Wasiliana na WhatsApp kupitia njia yake rasmi ya msaada ili kuomba msaada wa akaunti.",
+    contact:"FUNGUA WHATSAPP SUPPORT ↗",
+    guideTitle:"MWONGOZO WA KUREJESHA AKAUNTI",
+    step1:"01. Kagua ujumbe",
+    step1Desc:"Soma ujumbe unaoonyeshwa na WhatsApp na tambua kama akaunti imewekewa kizuizi cha muda au imepigwa ban.",
+    step2:"02. Tumia app rasmi",
+    step2Desc:"Sakinisha WhatsApp rasmi kutoka Apple App Store au Google Play Store.",
+    step3:"03. Omba ukaguzi",
+    step3Desc:"Ikiwa WhatsApp imeonyesha chaguo la Request a review, tuma maelezo ya kweli.",
+    step4:"04. Subiri majibu",
+    step4Desc:"Fuata maelekezo ya WhatsApp na subiri uamuzi. Epuka kutuma maombi yale yale mara kwa mara.",
+    step5:"05. Linda akaunti yako",
+    step5Desc:"Usimpe mtu verification code au password. Epuka kutumia WhatsApp zisizo rasmi.",
+    faqTitle:"MASWALI YA MARA KWA MARA",
+    q1:"Je, tool hii inaweza kufungua namba moja kwa moja? ＋",
+    a1:"Hapana. WhatsApp pekee ndiyo inaweza kukagua na kuamua kurejesha akaunti. Tool hii inatoa mwongozo tu.",
+    q2:"Je, tool hii inahifadhi namba yangu? ＋",
+    a2:"Hapana. Toleo hili la file moja halitumii au kuhifadhi namba kwenye database.",
+    q3:"Je, ombi linahakikisha akaunti itafunguliwa? ＋",
+    a3:"Hapana. WhatsApp hukagua kila ombi yenyewe. Toa taarifa sahihi.",
+    q4:"Je, WhatsApp itahitaji OTP yangu? ＋",
+    a4:"Usimpe mtu yeyote verification code yako. Ingiza code kwenye WhatsApp rasmi tu inapohitajika.",
+    q5:"Naweza kutumia kwenye iPhone? ＋",
+    a5:"Ndiyo. Website hii imeandaliwa kufanya kazi kwenye browser za simu za kisasa.",
+    aboutTitle:"KUHUSU YASSER TECH",
+    aboutDesc:"YASSER UNBAN TOOL ni mradi huru wa kutoa mwongozo wa kurejesha akaunti, unaoendeshwa na YASSER TECH. Haujahusishwa wala kuidhinishwa na WhatsApp au Meta.",
+    footerNote:"Mfumo huru wa msaada. Haujahusishwa na WhatsApp.",
+    invalid:"Tafadhali ingiza namba sahihi ya simu.",
+    resultTitle:"MATOKEO YA MWONGOZO",
+    bannedResult:"Tatizo ulilochagua linaweza kuashiria kuwa WhatsApp imezuia akaunti. Soma ujumbe ndani ya app na tumia Request a review ikiwa ipo.",
+    tempResult:"Kizuizi cha muda kinaweza kuhusiana na shughuli ambazo WhatsApp imezitambua kuwa zisizo za kawaida. Fuata maelekezo na epuka app zisizo rasmi.",
+    reviewResult:"Umesema tayari umeomba ukaguzi. Subiri majibu ya WhatsApp na fuata maelekezo yatakayotolewa.",
+    unknownResult:"Kagua internet, tumia app rasmi na fuata maelekezo ya kurejesha akaunti yanayoonekana ndani ya app.",
+    numberAdded:"Namba imeongezwa kwenye fomu ya ombi.",
+    generateFirst:"Tengeneza ombi kwanza.",
+    copied:"Ujumbe umenakiliwa.",
+    copyFail:"Nakili haijafanikiwa. Chagua na unakili ujumbe mwenyewe.",
+    cleared:"Fomu imefutwa.",
+    name:"Habari timu ya WhatsApp Support,",
+    body:"Naomba kwa heshima akaunti yangu ya WhatsApp ikaguliwe upya.",
+    numberLabel:"Namba yangu ya WhatsApp ni:",
+    situation:"Maelezo ya tatizo langu:",
+    request:"Ninaamini huenda kulitokea kutokuelewana. Tafadhali kagua akaunti yangu na nijulishe kama kuna hatua ninazopaswa kuchukua.",
+    thanks:"Asanteni kwa muda na msaada wenu.",
+    regards:"Wenu kwa heshima,",
+    reasonRequired:"Toa maelezo ya kweli ikiwa ungependa kuyaweka kwenye ombi."
+  }
+};
+
+// Apply selected language
+function setLanguage(lang) {
+  currentLanguage = lang;
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll("[data-i18n]").forEach(el => {
+    const key = el.dataset.i18n;
+    if(translations[lang][key]) {
+      el.textContent = translations[lang][key];
+    }
+  });
+
+  $("langBtn").textContent = lang === "en" ? "EN / SW" : "SW / EN";
+  localStorage.removeItem("unused-language-setting");
+}
+
+$("langBtn").addEventListener("click",()=>{
+  setLanguage(currentLanguage === "en" ? "sw" : "en");
+});
+
+// Toast
+function toast(message) {
+  const box = $("toast");
+  box.textContent = message;
+  box.classList.add("show");
+  setTimeout(()=>box.classList.remove("show"),2500);
+}
+
+// Country number validation
+function getFullNumber() {
+  const dial = $("country").value;
+  const raw = $("phone").value.replace(/\D/g,"");
+
+  if(!raw) return null;
+
+  let national = raw;
+
+  if(national.startsWith("0")) {
+    national = national.substring(1);
+  }
+
+  // Avoid duplicated country prefix
+  if(national.startsWith(dial) && national.length > 9) {
+    national = national.substring(dial.length);
+  }
+
+  if(national.length < 6 || national.length > 13) {
+    return null;
+  }
+
+  return "+" + dial + national;
+}
+
+// Diagnosis
+$("diagnoseBtn").addEventListener("click",()=>{
+  const number = getFullNumber();
+
+  if(!number) {
+    toast(translations[currentLanguage].invalid);
+    $("phone").focus();
+    return;
+  }
+
+  lastNumber = number;
+  $("appealNumber").value = number;
+
+  const issue = $("problem").value;
+  const t = translations[currentLanguage];
+
+  const messages = {
+    banned:t.bannedResult,
+    temporary:t.tempResult,
+    review:t.reviewResult,
+    unknown:t.unknownResult
+  };
+
+  $("diagnosisResult").innerHTML =
+    "<strong>"+t.resultTitle+"</strong><br>"+
+    messages[issue]+
+    "<br><br><span style='color:#999'>"+
+    escapeHTML(number)+"</span>";
+
+  $("diagnosisResult").classList.add("show");
+
+  toast(t.numberAdded);
+});
+
+// Escape user input
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, c => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  })[c]);
+}
+
+// Appeal generator
+$("generateBtn").addEventListener("click",()=>{
+  const number = lastNumber || getFullNumber();
+
+  if(!number) {
+    toast(translations[currentLanguage].invalid);
+    return;
+  }
+
+  const lang = $("appealLanguage").value;
+  const t = translations[lang];
+
+  const name = $("userName").value.trim();
+  const details = $("details").value.trim();
+
+  const lines = [
+    t.name,
+    "",
+    t.body,
+    "",
+    t.numberLabel+" "+number,
+    ""
+  ];
+
+  if(details) {
+    lines.push(t.situation);
+    lines.push(details);
+    lines.push("");
+  }
+
+  lines.push(t.request);
+  lines.push("");
+  lines.push(t.thanks);
+  lines.push("");
+  lines.push(t.regards);
+  lines.push(name || "WhatsApp User");
+
+  $("appealOutput").value = lines.join("\n");
+  toast("Appeal generated successfully.");
+});
+
+// Copy
+$("copyBtn").addEventListener("click",async()=>{
+  const text = $("appealOutput").value;
+  const t = translations[currentLanguage];
+
+  if(!text) {
+    toast(t.generateFirst);
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(text);
+    toast(t.copied);
+  } catch(e) {
+    $("appealOutput").select();
+    const success = document.execCommand("copy");
+    toast(success ? t.copied : t.copyFail);
+  }
+});
+
+// Clear
+$("clearBtn").addEventListener("click",()=>{
+  $("phone").value = "";
+  $("appealNumber").value = "";
+  $("userName").value = "";
+  $("details").value = "";
+  $("appealOutput").value = "";
+  $("diagnosisResult").classList.remove("show");
+  lastNumber = "";
+  toast(translations[currentLanguage].cleared);
+});
+
+// FAQ
+document.querySelectorAll(".faq button").forEach(button=>{
+  button.addEventListener("click",()=>{
+    button.parentElement.classList.toggle("open");
+  });
+});
+
+// Mobile menu
+$("menuBtn").addEventListener("click",()=>{
+  const menu = document.querySelector(".nav-links");
+  if(menu) menu.classList.toggle("open");
+});
+
+// Particle effects
+const particleContainer = $("particles");
+
+for(let i=0;i<28;i++) {
+  const particle = document.createElement("span");
+  particle.className = "particle";
+  particle.style.left = Math.random()*100+"%";
+  particle.style.animationDelay = Math.random()*8+"s";
+  particle.style.animationDuration = (5+Math.random()*7)+"s";
+  particle.style.opacity = Math.random();
+  particleContainer.appendChild(particle);
+}
+
+// Initial settings
+setLanguage("en");
+
+</script>
+
+</body>
+</html>
